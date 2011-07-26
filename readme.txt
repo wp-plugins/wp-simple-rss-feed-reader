@@ -6,11 +6,11 @@ Requires at least: 2.0
 Tested up to: 3.2
 Stable tag: 0.5
 
-Plugin to view an rss feed on your page or post. Or add a feed as widget. [simple-rss feed="http://www.yourfeed.com/myfeed.xml"]. Simply use the shortcode and the RSS feed will be shown in HTML to your visitor.
+Plugin to view an rss feed on your page or post. Or add a feed as widget. Clean and simple.
 
 == Description ==
 
-Plugin to view an rss feed on your page or post. Or add a feed as widget. [simple-rss feed="http://www.yourfeed.com/myfeed.xml"]. Simply use the shortcode and the RSS feed will be shown in HTML to your visitor
+Plugin to view an rss feed on your page or post. Or add a feed as widget. Clean and simple.
 
 
 == Installation ==
