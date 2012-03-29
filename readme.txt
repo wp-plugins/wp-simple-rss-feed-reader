@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=nieuw
 Tags: shortcodes, rssfeed, simple rss, rss reader
 Requires at least: 2.0
 Tested up to: 3.2
-Stable tag: 0.5
+Stable tag: 0.6
 
 Plugin to view an rss feed on your page or post. Or add a feed as widget. Clean and simple.
 
@@ -26,3 +26,5 @@ Plugin to view an rss feed on your page or post. Or add a feed as widget. Clean 
 * The first release
 = 0.5 =
 * first complete stable release with a widget functionality
+= 0.6 ==
+* fixed the bug where feeds with oldschool & and ? sighns weren't working
