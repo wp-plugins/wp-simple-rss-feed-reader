@@ -26,3 +26,5 @@ Plugin to view an rss feed on your page or post. Or add a feed as widget. Clean 
 * The first release
 = 0.5 =
 * first complete stable release with a widget functionality
+= 0.6 ==
+* fixed the bug where feeds with oldschool & and ? sighns weren't working

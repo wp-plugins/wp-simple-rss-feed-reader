@@ -5,7 +5,7 @@ Plugin URI: http://ifyoureadthisitstoolate.com/wordpress/wp-simple-rss-feed-read
 Description: Plugin to view an rss feed on your page or post. [simple-rss feed="http://www.yourfeed.com/myfeed.xml"]. Simply use the shortcode and the RSS feed will be shown in HTML to your visitor
 Version: 0.5
 Author: Viancen
-Author URI: http://ifyoureadthisitstoolate.com
+Author URI: http://viancen.com
 License: GPL2
 */
 
@@ -124,6 +124,7 @@ add_action('widgets_init', create_function('', 'return register_widget("SimpleRs
 */
 
 function wp_simple_rss_feed_reader($url){
+	$url = html_entity_decode($url);
     $xml = simplexml_load_file($url); 
     $return = "<a href=\"".$xml->channel->link."\" class=\"wp-simple-rss-feed-url\" target=\"_blank\">".$xml->channel->link."</a><hr />";
     $return .= "<ul  class=\"wp-simple-rss-list\">";
