@@ -10,6 +10,8 @@ License: GPL2
 
     function SimplRssfirstWords($string,$words=100){
         $wo = explode(" ",$string);
+        $c=0;
+        $return='';
         foreach ($wo as $piece){
             $c++;
             if($words>$c)
@@ -55,6 +57,7 @@ License: GPL2
                 echo $before_title . $title . $after_title;
 
             $i = 0;
+            $url = html_entity_decode($url);
             $xml = simplexml_load_file($url); 
             $return = "";
             $return .= "<ul  class=\"wp-simple-rss-list\">";
@@ -63,7 +66,7 @@ License: GPL2
                 $titel = $item->title; 
                 $link = $item->link; 
                     $return .= ' <li><h3><a href="'.$link.'" target="_blank" title="'.($titel).'" target="_blank" class="wp-simple-rss-link">'.($titel).'</a></h3>
-                   <span>'.htmlspecialchars_decode(SimplRssfirstWords($item->description,15)).'...</span><br /><br /> </li> '; 
+                   <span>'.(SimplRssfirstWords($item->description,15)).'...</span><br /><br /> </li> '; 
                 $i++;
             } 
             $return .= "</ul><Br /><a href=\"".$xml->channel->link."\" class=\"wp-simple-rss-feed-url\">".$xml->channel->link."</a>";
