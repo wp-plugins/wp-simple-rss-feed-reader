@@ -2,9 +2,9 @@
 Contributors: Viancen
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=nieuwenhuizen%40gmail%2ecom&lc=NL&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: shortcodes, rssfeed, simple rss, rss reader
-Requires at least: 2.0
-Tested up to: 3.2
-Stable tag: 0.6
+Requires at least: 3.0
+Tested up to: 3.3.1
+Stable tag: 0.6.1
 
 Plugin to view an rss feed on your page or post. Or add a feed as widget. Clean and simple.
 
@@ -28,3 +28,5 @@ Plugin to view an rss feed on your page or post. Or add a feed as widget. Clean 
 * first complete stable release with a widget functionality
 = 0.6 ==
 * fixed the bug where feeds with oldschool & and ? sighns weren't working
+= 0.6.1 ==
+* removed utf8 decoding, was causing trouble on special characters

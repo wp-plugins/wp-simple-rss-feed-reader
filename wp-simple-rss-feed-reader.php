@@ -1,9 +1,8 @@
 <?php
 /*
 Plugin Name: WP Simple Rss Feed Reader 
-Plugin URI: http://ifyoureadthisitstoolate.com/wordpress/wp-simple-rss-feed-reader/
 Description: Plugin to view an rss feed on your page or post. [simple-rss feed="http://www.yourfeed.com/myfeed.xml"]. Simply use the shortcode and the RSS feed will be shown in HTML to your visitor
-Version: 0.6
+Version: 0.6.1
 Author: Viancen
 Author URI: http://viancen.com
 License: GPL2
@@ -63,7 +62,7 @@ License: GPL2
                 if($i == $limit) break; 
                 $titel = $item->title; 
                 $link = $item->link; 
-                    $return .= ' <li><h3><a href="'.$link.'" target="_blank" title="'.utf8_decode($titel).'" target="_blank" class="wp-simple-rss-link">'.utf8_decode($titel).'</a></h3>
+                    $return .= ' <li><h3><a href="'.$link.'" target="_blank" title="'.($titel).'" target="_blank" class="wp-simple-rss-link">'.($titel).'</a></h3>
                    <span>'.htmlspecialchars_decode(SimplRssfirstWords($item->description,15)).'...</span><br /><br /> </li> '; 
                 $i++;
             } 
@@ -132,8 +131,8 @@ function wp_simple_rss_feed_reader($url){
     { 
         $titel = $item->title; 
         $link = $item->link; 
-            $return .= ' <li><h3><a href="'.$link.'" target="_blank" title="'.utf8_decode($titel).'" class="wp-simple-rss-link">'.utf8_decode($titel).'</a></h3>
-           <span>'.htmlspecialchars_decode($item->description).'</span><br /><br /> </li> '; 
+            $return .= ' <li><h3><a href="'.$link.'" target="_blank" title="'.($titel).'" class="wp-simple-rss-link">'.($titel).'</a></h3>
+           <span>'.($item->description).'</span><br /><br /> </li> '; 
     } 
     $return .= "</ul>";
     return $return;
