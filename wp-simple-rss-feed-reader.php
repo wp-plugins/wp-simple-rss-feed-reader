@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: WP Simple Rss Feed Reader 
-Description: Plugin to view an rss feed on your page or post. [simple-rss feed="http://www.yourfeed.com/myfeed.xml"]. Simply use the shortcode and the RSS feed will be shown in HTML to your visitor
-Version: 0.6.1
+Description: Plugin to view an rss feed on your page or post. [simple-rss feed="http://www.yourfeed.com/myfeed.xml" limit=10]. Simply use the shortcode and the RSS feed will be shown in HTML to your visitor
+Version: 0.6.2
 Author: Viancen
 Author URI: http://viancen.com
 License: GPL2
@@ -125,17 +125,22 @@ add_action('widgets_init', create_function('', 'return register_widget("SimpleRs
 * @param mixed $url
 */
 
-function wp_simple_rss_feed_reader($url){
+function wp_simple_rss_feed_reader($url,$limit=50){
 	$url = html_entity_decode($url);
     $xml = simplexml_load_file($url); 
+    
     $return = "<a href=\"".$xml->channel->link."\" class=\"wp-simple-rss-feed-url\" target=\"_blank\">".$xml->channel->link."</a><hr />";
     $return .= "<ul  class=\"wp-simple-rss-list\">";
+    $i=0;
     foreach($xml->channel->item as $item) 
     { 
+    	$i++;
+    	
         $titel = $item->title; 
         $link = $item->link; 
             $return .= ' <li><h3><a href="'.$link.'" target="_blank" title="'.($titel).'" class="wp-simple-rss-link">'.($titel).'</a></h3>
            <span>'.($item->description).'</span><br /><br /> </li> '; 
+        if($i == $limit) break;
     } 
     $return .= "</ul>";
     return $return;
@@ -151,10 +156,11 @@ function wp_simple_rss_feed_reader($url){
 */
 function wp_simple_rss_feed_shorttag($atts) {
     extract(shortcode_atts(array(
-    'feed'         => ''
+    'feed'         => '',
+    'limit'         => ''
     ), $atts));
 
-    return wp_simple_rss_feed_reader($feed);
+    return wp_simple_rss_feed_reader($feed,$limit);
 }
 //add shortcodes
 add_shortcode( 'simple-rss', 'wp_simple_rss_feed_shorttag');
