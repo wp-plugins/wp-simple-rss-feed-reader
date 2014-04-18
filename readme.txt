@@ -3,8 +3,8 @@ Contributors: Viancen
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=nieuwenhuizen%40gmail%2ecom&lc=NL&currency_code=EUR&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Tags: shortcodes, rssfeed, simple rss, rss reader, twitter
 Requires at least: 3.0
-Tested up to: 3.8.1
-Stable tag: 0.6.4
+Tested up to: 3.9
+Stable tag: 0.7
 
 Plugin to view an rss feed on your page or post. Or add a feed as widget. Clean and simple.
 
@@ -39,3 +39,7 @@ Plugin to view an rss feed on your page or post. Or add a feed as widget. Clean 
 * error catching on invalid feeds
 * added option to limit the words in the description
 * added configuration options in the shorttag
+= 0.7 =
+* error catching on invalid feeds > improved
+* added option to show the pubDate in shorttag and widget
+* cleanup of files
