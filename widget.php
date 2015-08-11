@@ -36,6 +36,11 @@
             if(isset($instance['hide_description']))
                 $hide_description = $instance['hide_description'];
 
+            //get hide_url
+            $hide_url = 0;
+            if(isset($instance['hide_url']))
+                $hide_url = $instance['hide_url'];
+
             //get show_date
             $show_date = 0;
             if(isset($instance['show_date']))
@@ -57,10 +62,10 @@
             $url = html_entity_decode($url);
 
             //test feed first
-            $content = @file_get_contents($url); 
-            try { 
+            $content = file_get_contents($url);
+            try {
                 $xml = new SimpleXmlElement($content); 
-            }   catch(
+            }   catch (
                 Exception $e){ 
                 /* the data provided is not valid XML */ 
                 return 'Unfortunally the feed you provided is not valid...'; 
@@ -70,7 +75,7 @@
             if(!is_object($xml)){ 
                 echo 'Unfortunally the feed you provided is not valid...';  
             } else {
-                $return  = SimplRssParse($xml,$limit,$hide_description,$show_date,$amount_of_words);
+                $return  = SimplRssParse($xml,$limit,$hide_description,$hide_url,$show_date,$amount_of_words);
                 echo $return;
                 echo $after_widget;
             }
@@ -85,6 +90,7 @@
             $instance['title'] = strip_tags($new_instance['title']);
             $instance['amount_of_words'] = (int)($new_instance['amount_of_words']);
             $instance['hide_description'] = (int)($new_instance['hide_description']);
+            $instance['hide_url'] = (int)($new_instance['hide_url']);
             $instance['show_date'] = (int)($new_instance['show_date']);
             return $instance;
         }
@@ -110,7 +116,11 @@
             if(isset( $instance['hide_description'] ))
                 $hide_description = (int)($instance['hide_description']);
             else $hide_description = 0;
-            
+
+            if(isset( $instance['hide_url'] ))
+                $hide_url = (int)($instance['hide_url']);
+            else $hide_url = 0;
+
             if(isset( $instance['show_date'] ))
                 $show_date = (int)($instance['show_date']);
             else $show_date = 0;
@@ -135,6 +145,10 @@
             <label for="<?php echo $this->get_field_id('hide_description'); ?>"><?php _e('Hide description:'); ?> &nbsp;
                 <input type="checkbox" id="<?php echo $this->get_field_id('hide_description'); ?>" value="1" name="<?php echo $this->get_field_name('hide_description'); ?>" <?php if($hide_description == 1) echo 'checked="checked"'; ?> /></label>
             
+            <br />
+            <label for="<?php echo $this->get_field_id('hide_url'); ?>"><?php _e('Hide url:'); ?> &nbsp;
+                <input type="checkbox" id="<?php echo $this->get_field_id('hide_url'); ?>" value="1" name="<?php echo $this->get_field_name('hide_url'); ?>" <?php if($hide_url == 1) echo 'checked="checked"'; ?> /></label>
+
             <br />
             <label for="<?php echo $this->get_field_id('show_date'); ?>"><?php _e('Show date?'); ?> &nbsp;
                 <input type="checkbox" id="<?php echo $this->get_field_id('show_date'); ?>" value="1" name="<?php echo $this->get_field_name('show_date'); ?>" <?php if($show_date == 1) echo 'checked="checked"'; ?> /></label>

@@ -5,7 +5,7 @@
     * @param mixed $url
     */
 
-    function wp_simple_rss_feed_reader($url,$limit=50,$hide_description=0,$show_date=0,$amount_of_words=0){
+    function wp_simple_rss_feed_reader($url,$limit=50,$hide_description=0,$hide_url=0,$show_date=0,$amount_of_words=0){
 
         if($amount_of_words == 0) $amount_of_words=9999;
 
@@ -24,7 +24,7 @@
         
         if(!is_object($xml)){ return 'Unfortunally the feed you provided is not valid...';  }
         
-        $return  = SimplRssParse($xml,$limit,$hide_description,$show_date,$amount_of_words);
+        $return  = SimplRssParse($xml,$limit,$hide_description,$hide_url,$show_date,$amount_of_words);
         
         return $return;
     }
@@ -41,12 +41,13 @@
         extract(shortcode_atts(array(
                     'feed'              => '',
                     'hide_description'  => 0,
+                    'hide_url'  => 0,
                     'show_date'  => 0,
                     'amount_of_words'   => 0,
                     'limit'             => ''
                 ), $atts));
 
-        return wp_simple_rss_feed_reader($feed,$limit,$hide_description,$show_date,$amount_of_words);
+        return wp_simple_rss_feed_reader($feed,$limit,$hide_description,$hide_url,$show_date,$amount_of_words);
     }
     //add shortcodes
     add_shortcode( 'simple-rss', 'wp_simple_rss_feed_shorttag');
